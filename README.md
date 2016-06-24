@@ -9,7 +9,7 @@ The generated images will be placed in resources/icons/
 
 ### Installation
 
-     $ npm install meteor-cordova-icon
+     $ npm install meteor-cordova-icon -g
 
 ### Requirements
 

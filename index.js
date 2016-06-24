@@ -8,109 +8,32 @@ var Q      = require('q');
 var wrench = require('wrench');
 
 /**
- * Check which platforms are added to the project and return their icon names and sizes
- *
- * @param  {String} projectName
- * @return {Promise} resolves with an array of platforms
- */
-var getPlatforms = function (projectName) {
-  var deferred = Q.defer();
-  var platforms = [];
-  platforms.push({
-    name : 'ios',
-    // TODO: use async fs.exists
-    isAdded : fs.existsSync('platforms/ios'),
-    iconsPath : 'platforms/ios/' + projectName + '/Images.xcassets/AppIcon.appiconset/',
-    icons : [
-      { name : 'icon-40.png',       size : 40  },
-      { name : 'icon-40@2x.png',    size : 80  },
-      { name : 'icon-50.png',       size : 50  },
-      { name : 'icon-50@2x.png',    size : 100 },
-      { name : 'icon-60.png',       size : 60  },
-      { name : 'icon-60@2x.png',    size : 120 },
-      { name : 'icon-60@3x.png',    size : 180 },
-      { name : 'icon-72.png',       size : 72  },
-      { name : 'icon-72@2x.png',    size : 144 },
-      { name : 'icon-76.png',       size : 76  },
-      { name : 'icon-76@2x.png',    size : 152 },
-      { name : 'icon-small.png',    size : 29  },
-      { name : 'icon-small@2x.png', size : 58  },
-      { name : 'icon-small@3x.png', size : 87  },
-      { name : 'icon.png',          size : 57  },
-      { name : 'icon@2x.png',       size : 114 },
-      { name : 'icon-83.5@2x.png',  size : 167 }
-    ]
-  });
-  platforms.push({
-    name : 'android',
-    isAdded : fs.existsSync('platforms/android'),
-    iconsPath : 'platforms/android/res/',
-    icons : [
-      { name : 'drawable/icon.png',       size : 96 },
-      { name : 'drawable-hdpi/icon.png',  size : 72 },
-      { name : 'drawable-ldpi/icon.png',  size : 36 },
-      { name : 'drawable-mdpi/icon.png',  size : 48 },
-      { name : 'drawable-xhdpi/icon.png', size : 96 },
-      { name : 'drawable-xxhdpi/icon.png', size : 144 },
-      { name : 'drawable-xxxhdpi/icon.png', size : 192 }
-    ]
-  });
-  platforms.push({
-    name : 'windows',
-    isAdded : fs.existsSync('platforms/windows'),
-    iconsPath : 'platforms/windows/images/',
-    icons : [
-      { name : 'StoreLogo.scale-100.png', size : 50  },
-      { name : 'StoreLogo.scale-125.png', size : 63  },
-      { name : 'StoreLogo.scale-150.png', size : 75  },
-      { name : 'StoreLogo.scale-200.png', size : 100 },
-      { name : 'StoreLogo.scale-400.png', size : 200 },
-
-      { name : 'Square44x44Logo.scale-100.png', size : 44  },
-      { name : 'Square44x44Logo.scale-125.png', size : 55  },
-      { name : 'Square44x44Logo.scale-150.png', size : 66  },
-      { name : 'Square44x44Logo.scale-200.png', size : 88  },
-      { name : 'Square44x44Logo.scale-400.png', size : 176 },
-
-      { name : 'Square71x71Logo.scale-100.png', size : 71  },
-      { name : 'Square71x71Logo.scale-125.png', size : 89  },
-      { name : 'Square71x71Logo.scale-150.png', size : 107 },
-      { name : 'Square71x71Logo.scale-200.png', size : 142 },
-      { name : 'Square71x71Logo.scale-400.png', size : 284 },
-
-      { name : 'Square150x150Logo.scale-100.png', size : 150 },
-      { name : 'Square150x150Logo.scale-125.png', size : 188 },
-      { name : 'Square150x150Logo.scale-150.png', size : 225 },
-      { name : 'Square150x150Logo.scale-200.png', size : 300 },
-      { name : 'Square150x150Logo.scale-400.png', size : 600 },
-
-      { name : 'Square310x310Logo.scale-100.png', size : 310  },
-      { name : 'Square310x310Logo.scale-125.png', size : 388  },
-      { name : 'Square310x310Logo.scale-150.png', size : 465  },
-      { name : 'Square310x310Logo.scale-200.png', size : 620  },
-      { name : 'Square310x310Logo.scale-400.png', size : 1240 },
-
-      { name : 'Wide310x150Logo.scale-100.png', size : 310, height : 150  },
-      { name : 'Wide310x150Logo.scale-125.png', size : 388, height : 188  },
-      { name : 'Wide310x150Logo.scale-150.png', size : 465, height : 225  },
-      { name : 'Wide310x150Logo.scale-200.png', size : 620, height : 300  },
-      { name : 'Wide310x150Logo.scale-400.png', size : 1240, height : 600 }
-    ]
-  });
-  // TODO: add missing platforms
-  deferred.resolve(platforms);
-  return deferred.promise;
-};
-
-
-/**
  * @var {Object} settings - names of the config file and of the icon image
  * TODO: add option to get these values as CLI params
  */
 var settings = {};
-settings.CONFIG_FILE = 'config.xml';
+settings.CONFIG_FILE = 'mobile-config.js';
 settings.ICON_FILE   = 'icon.png';
-
+settings.DESTINATION   = 'resources/icons/';
+settings.IOS_ICONS = [
+  { name : '/ios/iphone_2x.png', size: 120 },
+  { name : '/ios/iphone_3x.png', size: 180 },
+  { name : '/ios/ipad.png', size: 76 },
+  { name : '/ios/ipad_2x.png', size: 152 },
+  { name : '/ios/ipad_pro.png', size: 167 },
+  { name : '/ios/ios_settings.png', size: 29 },
+  { name : '/ios/ios_settings_2x.png', size: 58 },
+  { name : '/ios/ios_settings_3x.png', size: 87 },
+  { name : '/ios/ios_spotlight.png', size: 40 },
+  { name : '/ios/ios_spotlight_2x.png', size: 80 },
+];
+settings.ANDROID_ICONS = [
+  { name : '/android/android_mdpi.png', size: 48 },
+  { name : '/android/android_hdpi.png', size: 72 },
+  { name : '/android/android_xhdpi.png', size: 96 },
+  { name : '/android/android_xxhdpi.png', size: 144 },
+  { name : '/android/android_xxxhdpi.png', size: 192 },
+];
 /**
  * @var {Object} console utils
  */
@@ -130,43 +53,15 @@ display.header = function (str) {
 };
 
 /**
- * read the config file and get the project name
- *
- * @return {Promise} resolves to a string - the project's name
- */
-var getProjectName = function () {
-  var deferred = Q.defer();
-  var parser = new xml2js.Parser();
-  data = fs.readFile(settings.CONFIG_FILE, function (err, data) {
-    if (err) {
-      deferred.reject(err);
-    }
-    parser.parseString(data, function (err, result) {
-      if (err) {
-        deferred.reject(err);
-      }
-      var projectName = result.widget.name[0];
-      deferred.resolve(projectName);
-    });
-  });
-  return deferred.promise;
-};
-
-/**
  * Resizes, crops (if needed) and creates a new icon in the platform's folder.
  *
- * @param  {Object} platform
  * @param  {Object} icon
  * @return {Promise}
  */
-var generateIcon = function (platform, icon) {
+var generateIcon = function (icon) {
   var deferred = Q.defer();
   var srcPath = settings.ICON_FILE;
-  var platformPath = srcPath.replace(/\.png$/, '-' + platform.name + '.png');
-  if (fs.existsSync(platformPath)) {
-    srcPath = platformPath;
-  }
-  var dstPath = platform.iconsPath + icon.name;
+  var dstPath = settings.DESTINATION + icon.name;
   var dst = path.dirname(dstPath);
   if (!fs.existsSync(dst)) {
     wrench.mkdirSyncRecursive(dst);
@@ -212,58 +107,23 @@ var generateIcon = function (platform, icon) {
  * @param  {Object} platform
  * @return {Promise}
  */
-var generateIconsForPlatform = function (platform) {
-  display.header('Generating Icons for ' + platform.name);
+var generateIcons = function (platform) {
+  display.header('Generating Icons for ' + platform);
+
+  var icons = [];
+  if (platform == 'all') {
+    icons = settings.IOS_ICONS.concat(settings.ANDROID_ICONS)
+  } else if (platform == 'ios') {
+    icons = settings.IOS_ICONS;
+  } else if (platform == 'android') {
+    icons = settings.ANDROID_ICONS;
+  }
+
   var all = [];
-  var icons = platform.icons;
   icons.forEach(function (icon) {
-    all.push(generateIcon(platform, icon));
+    all.push(generateIcon(icon));
   });
   return Promise.all(all);
-};
-
-/**
- * Goes over all the platforms and triggers icon generation
- *
- * @param  {Array} platforms
- * @return {Promise}
- */
-var generateIcons = function (platforms) {
-  var deferred = Q.defer();
-  var sequence = Q();
-  var all = [];
-  _(platforms).where({ isAdded : true }).forEach(function (platform) {
-    sequence = sequence.then(function () {
-      return generateIconsForPlatform(platform);
-    });
-    all.push(sequence);
-  });
-  Q.all(all).then(function () {
-    deferred.resolve();
-  });
-  return deferred.promise;
-};
-
-/**
- * Checks if at least one platform was added to the project
- *
- * @return {Promise} resolves if at least one platform was found, rejects otherwise
- */
-var atLeastOnePlatformFound = function () {
-  var deferred = Q.defer();
-  getPlatforms().then(function (platforms) {
-    var activePlatforms = _(platforms).where({ isAdded : true });
-    if (activePlatforms.length > 0) {
-      display.success('platforms found: ' + _(activePlatforms).pluck('name').join(', '));
-      deferred.resolve();
-    } else {
-      display.error('No cordova platforms found.' +
-                    'Make sure you are in the root folder of your Cordova project' +
-                      'and add platforms with \'cordova platform add\'');
-                      deferred.reject();
-    }
-  });
-  return deferred.promise;
 };
 
 /**
@@ -272,6 +132,7 @@ var atLeastOnePlatformFound = function () {
  * @return {Promise} resolves if exists, rejects otherwise
  */
 var validIconExists = function () {
+  display.header('Checking Icon');
   var deferred = Q.defer();
   fs.exists(settings.ICON_FILE, function (exists) {
     if (exists) {
@@ -284,38 +145,43 @@ var validIconExists = function () {
   });
   return deferred.promise;
 };
-
 /**
- * Checks if a config.xml file exists
+ * Receives selected platforms for command line input.
  *
  * @return {Promise} resolves if exists, rejects otherwise
  */
-var configFileExists = function () {
+var getPlatforms = function () {
+  display.header('Checking Arguments');
   var deferred = Q.defer();
-  fs.exists(settings.CONFIG_FILE, function (exists) {
-    if (exists) {
-      display.success(settings.CONFIG_FILE + ' exists');
-      deferred.resolve();
-    } else {
-      display.error('cordova\'s ' + settings.CONFIG_FILE + ' does not exist in the root folder');
+  var args = process.argv.slice(2);
+  switch (args.length) {
+    case 0:
+      var platform = 'all';
+      display.success('Selected all platforms.');
+      deferred.resolve(platform);
+      break;
+    case 1:
+      var platform = args[0];
+      if (platform == 'ios' || platform == 'android') {
+        display.success('Selected ' + args[0]);
+        deferred.resolve(platform);
+        break;
+      }
+    default:
+      display.error('Usage: meteor-cordova-icon [ios||android].');
       deferred.reject();
-    }
-  });
+      break;
+  }
   return deferred.promise;
 };
 
-display.header('Checking Project & Icon');
-
-atLeastOnePlatformFound()
-  .then(validIconExists)
-  .then(configFileExists)
-  .then(getProjectName)
-  .then(getPlatforms)
-  .then(generateIcons)
-  .catch(function (err) {
-    if (err) {
-      console.log(err);
-    }
-  }).then(function () {
-    console.log('');
-  });
+validIconExists()
+.then(getPlatforms)
+.then(generateIcons)
+.catch(function (err) {
+  if (err) {
+    console.log(err);
+  }
+}).then(function () {
+  console.log('');
+});

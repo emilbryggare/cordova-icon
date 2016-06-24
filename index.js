@@ -16,23 +16,23 @@ settings.CONFIG_FILE = 'mobile-config.js';
 settings.ICON_FILE   = 'icon.png';
 settings.DESTINATION   = 'resources/icons/';
 settings.IOS_ICONS = [
-  { name : '/ios/iphone_2x.png', size: 120 },
-  { name : '/ios/iphone_3x.png', size: 180 },
-  { name : '/ios/ipad.png', size: 76 },
-  { name : '/ios/ipad_2x.png', size: 152 },
-  { name : '/ios/ipad_pro.png', size: 167 },
-  { name : '/ios/ios_settings.png', size: 29 },
-  { name : '/ios/ios_settings_2x.png', size: 58 },
-  { name : '/ios/ios_settings_3x.png', size: 87 },
-  { name : '/ios/ios_spotlight.png', size: 40 },
-  { name : '/ios/ios_spotlight_2x.png', size: 80 },
+  { name : 'iphone_2x.png', size: 120 },
+  { name : 'iphone_3x.png', size: 180 },
+  { name : 'ipad.png', size: 76 },
+  { name : 'ipad_2x.png', size: 152 },
+  { name : 'ipad_pro.png', size: 167 },
+  { name : 'ios_settings.png', size: 29 },
+  { name : 'ios_settings_2x.png', size: 58 },
+  { name : 'ios_settings_3x.png', size: 87 },
+  { name : 'ios_spotlight.png', size: 40 },
+  { name : 'ios_spotlight_2x.png', size: 80 },
 ];
 settings.ANDROID_ICONS = [
-  { name : '/android/android_mdpi.png', size: 48 },
-  { name : '/android/android_hdpi.png', size: 72 },
-  { name : '/android/android_xhdpi.png', size: 96 },
-  { name : '/android/android_xxhdpi.png', size: 144 },
-  { name : '/android/android_xxxhdpi.png', size: 192 },
+  { name : 'android_mdpi.png', size: 48 },
+  { name : 'android_hdpi.png', size: 72 },
+  { name : 'android_xhdpi.png', size: 96 },
+  { name : 'android_xxhdpi.png', size: 144 },
+  { name : 'android_xxxhdpi.png', size: 192 },
 ];
 /**
  * @var {Object} console utils

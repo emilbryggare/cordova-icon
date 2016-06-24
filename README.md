@@ -1,64 +1,64 @@
-# cordova-icon
+# meteor-cordova-icon
 
 <img src="cordova-icon-resize.png"/>
 
-Automatic icon resizing for Cordova. Create an icon in the root folder of your Cordova project and use cordova-icon to automatically resize and copy it for all the platforms your project supports (currenty works with iOS, Android and Windows 10).
+Automatic icon resizing for Meteor with Cordova. Create an icon in the root folder of your Meteor project and use meteor-cordova-icon to automatically resize and copy it for Android and iOS.
+
+The generated images will be placed in resources/icons/
+
 
 ### Installation
 
-     $ sudo npm install cordova-icon -g
+     $ npm install meteor-cordova-icon
 
 ### Requirements
 
 - ImageMagick installed (*Mac*: `brew install imagemagick`, *Debian/Ubuntu*: `sudo apt-get install imagemagick`, *Windows*: [See here](http://www.imagemagick.org/script/binary-releases.php#windows))
-- At least one platform was added to your project ([cordova platforms docs](http://cordova.apache.org/docs/en/edge/guide_platforms_index.md.html#Platform%20Guides))
-- Cordova's config.xml file must exist in the root folder ([cordova config.xml docs](http://cordova.apache.org/docs/en/edge/config_ref_index.md.html#The%20config.xml%20File))
 
 ### Usage
 
-Create an `icon.png` file in the root folder of your cordova project.
-You can provide a platform-specific icon by naming it `icon-[platform].png`
-(e.g `icon-android.png`, `icon-ios.png`).
+Create an `icon.png` file in the root folder of your Meteor project.
+
 Then run:
 
-     $ cordova-icon
+     $ meteor-cordova-icon
 
-For good results, your file shoud be:
+For good results, your file should be:
 
 - square
 - for Android and iOS, at least 192\*192px (512\*512px recommended to be future-proof)
 - for Windows, at least 1240\*1240px
 
-### Creating a cordova-cli hook
+### Config
+Copy relevant contents the configuration below to your mobile-config.js file.
 
-Since the execution of cordova-icon is pretty fast, you can add it as a cordova-cli hook to execute before every build.
-To create a new hook, go to your cordova project and run:
-
-    $ mkdir hooks/after_prepare
-    $ vi hooks/after_prepare/cordova-icon.sh
-
-Paste the following into the hook script:
-
-    #!/bin/bash
-    cordova-icon
-
-Then give the script +x permission:
-
-    $ chmod +x hooks/after_prepare/cordova-icon.sh
-
-That's it. Now every time you `cordova build`, the icons will be auto generated.
+    // mobile-config.js
+    App.icons({
+      iphone: 'resources/icons/iphone.png',
+      iphone_2x: 'resources/icons/iphone_2x.png',
+      iphone_3x: 'resources/icons/iphone_3x.png',
+      ipad: 'resources/icons/ipad.png',
+      ipad_2x: 'resources/icons/ipad_2x.png',
+      ipad_pro: 'resources/icons/ipad_pro.png',
+      ios_settings: 'resources/icons/ios_settings.png',
+      ios_settings_2x: 'resources/icons/ios_settings_2x.png',
+      ios_settings_3x: 'resources/icons/ios_settings_3x.png',
+      ios_spotlight: 'resources/icons/ios_spotlight.png',
+      ios_spotlight_2x: 'resources/icons/ios_spotlight_2x.png',
+      android_ldpi: 'resources/icons/android_ldpi.png',
+      android_mdpi: 'resources/icons/android_mdpi.png',
+      android_hdpi: 'resources/icons/android_hdpi.png',
+      android_xhdpi: 'resources/icons/android_xhdpi.png',
+      android_xxhdpi: 'resources/icons/android_xxhdpi.png',
+      android_xxxhdpi: 'resources/icons/android_xxxhdpi.png',
+    });
 
 ### Splash screens
 
-Check out [cordova-splash](https://github.com/AlexDisler/cordova-splash)
+Check out [meteor-cordova-splash](https://github.com/emilbryggare/meteor-cordova-splash)
 
-### More
-
-- [cordova-plugin-inapppurchase](https://github.com/AlexDisler/cordova-plugin-inapppurchase) - a lightweight cordova plugin for in app purchases on iOS/Android
-- [ng-special-offer](https://github.com/AlexDisler/ng-special-offer) - prompt users to rate your cordova app in the app store
-- [ionic-lock-screen](https://github.com/AlexDisler/ionic-lock-screen) - passcode lock screen for ionic (with touch id support for iOS)
-- [ionic-zoom-view](https://github.com/AlexDisler/ionic-zoom-view) - an easy way to add a zoom view to images using an ionic modal
-- [ng-persist](https://github.com/AlexDisler/ng-persist) - store data on mobile devices (using cordova) that persists even if the user reinstalls the app
+### Acknowledgements
+This is a fork of [cordova-icon](https://github.com/AlexDisler/cordova-icon) by Alex Disler. Most of the work was already done by him.
 
 ### License
 

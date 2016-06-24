@@ -1,7 +1,7 @@
 {
-  "name": "cordova-icon",
-  "version": "0.7.0",
-  "description": "Automatic icon resizing for Cordova",
+  "name": "meteor-cordova-icon",
+  "version": "0.1.0",
+  "description": "Automatic icon resizing for Meteor with Cordova",
   "main": "index.js",
   "preferGlobal": "true",
   "directories": {
@@ -12,19 +12,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/AlexDisler/cordova-icon.git"
+    "url": "git@github.com:emilbryggare/meteor-cordova-icon.git"
   },
   "keywords": [
+    "meteor",
     "cordova",
     "icon",
-    "resize"
+    "resize",
+    "generate"
   ],
-  "author": "Alex Disler",
+  "author": "Emil Bryggare",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AlexDisler/cordova-icon/issues"
+    "url": "https://github.com/emilbryggare/meteor-cordova-icon/issues"
   },
-  "homepage": "https://github.com/AlexDisler/cordova-icon",
+  "homepage": "https://github.com/emilbryggare/meteor-cordova-icon",
   "dependencies": {
     "colors": "^0.6.2",
     "imagemagick": "^0.1.3",

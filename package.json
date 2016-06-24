@@ -1,6 +1,6 @@
 {
   "name": "meteor-cordova-icon",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Automatic icon resizing for Meteor with Cordova",
   "main": "index.js",
   "preferGlobal": "true",

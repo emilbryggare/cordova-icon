@@ -26,7 +26,7 @@ Then run:
 For good results, your file should be:
 
 - square
-- for Android and iOS, at least 192\*192px (512\*512px recommended to be future-proof)
+- for Android and iOS, at least 1024\*1024px
 - for Windows, at least 1240\*1240px
 
 ### Config
@@ -34,6 +34,7 @@ Copy relevant contents the configuration below to your mobile-config.js file.
 
     // mobile-config.js
     App.icons({
+      app_store: 'resources/icons/app_store.png',
       iphone_2x: 'resources/icons/iphone_2x.png',
       iphone_3x: 'resources/icons/iphone_3x.png',
       ipad: 'resources/icons/ipad.png',
@@ -44,6 +45,10 @@ Copy relevant contents the configuration below to your mobile-config.js file.
       ios_settings_3x: 'resources/icons/ios_settings_3x.png',
       ios_spotlight: 'resources/icons/ios_spotlight.png',
       ios_spotlight_2x: 'resources/icons/ios_spotlight_2x.png',
+      ios_spotlight_3x: 'resources/icons/ios_spotlight_3x.png',
+      ios_notification: 'resources/icons/ios_notification.png',
+      ios_notification_2x: 'resources/icons/ios_notification_2x.png',
+      ios_notification_3x: 'resources/icons/ios_notification_3x.png',
       android_mdpi: 'resources/icons/android_mdpi.png',
       android_hdpi: 'resources/icons/android_hdpi.png',
       android_xhdpi: 'resources/icons/android_xhdpi.png',

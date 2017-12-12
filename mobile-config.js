@@ -1,4 +1,5 @@
 App.icons({
+  app_store: 'resources/icons/app_store.png',
   iphone_2x: 'resources/icons/iphone_2x.png',
   iphone_3x: 'resources/icons/iphone_3x.png',
   ipad: 'resources/icons/ipad.png',
@@ -9,6 +10,10 @@ App.icons({
   ios_settings_3x: 'resources/icons/ios_settings_3x.png',
   ios_spotlight: 'resources/icons/ios_spotlight.png',
   ios_spotlight_2x: 'resources/icons/ios_spotlight_2x.png',
+  ios_spotlight_3x: 'resources/icons/ios_spotlight_3x.png',
+  ios_notification: 'resources/icons/ios_notification.png',
+  ios_notification_2x: 'resources/icons/ios_notification_2x.png',
+  ios_notification_3x: 'resources/icons/ios_notification_3x.png',
   android_mdpi: 'resources/icons/android_mdpi.png',
   android_hdpi: 'resources/icons/android_hdpi.png',
   android_xhdpi: 'resources/icons/android_xhdpi.png',
